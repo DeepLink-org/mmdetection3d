@@ -102,9 +102,9 @@ eval_pipeline = [
 ]
 train_dataloader = dict(
     batch_size=6,
-    num_workers=4,
-    persistent_workers=True,
-    sampler=dict(type='DefaultSampler', shuffle=True),
+    num_workers=0,
+    persistent_workers=False,
+    sampler=dict(type='DefaultSampler', shuffle=False),
     dataset=dict(
         type='RepeatDataset',
         times=2,
@@ -123,8 +123,8 @@ train_dataloader = dict(
             backend_args=backend_args)))
 val_dataloader = dict(
     batch_size=1,
-    num_workers=1,
-    persistent_workers=True,
+    num_workers=0,
+    persistent_workers=False,
     drop_last=False,
     sampler=dict(type='DefaultSampler', shuffle=False),
     dataset=dict(
