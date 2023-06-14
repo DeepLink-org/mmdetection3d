@@ -7,7 +7,7 @@ lr = 0.0018
 # the official AdamW optimizer implemented by PyTorch.
 optim_wrapper = dict(
     type='OptimWrapper',
-    optimizer=dict(type='AdamW', lr=lr, betas=(0.95, 0.99), weight_decay=0.01),
+    optimizer=dict(type='AdamW', lr=lr, betas=(0.95, 0.99), weight_decay=0.01,foreach=False),
     clip_grad=dict(max_norm=10, norm_type=2))
 # learning rate
 param_scheduler = [
@@ -56,7 +56,7 @@ param_scheduler = [
 # Although the max_epochs is 40, this schedule is usually used we
 # RepeatDataset with repeat ratio N, thus the actual max epoch
 # number could be Nx40
-train_cfg = dict(by_epoch=True, max_epochs=3, val_interval=1)
+train_cfg = dict(by_epoch=True, max_epochs=40, val_interval=2)
 val_cfg = dict()
 test_cfg = dict()
 
